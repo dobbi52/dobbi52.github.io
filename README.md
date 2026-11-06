@@ -32,6 +32,22 @@
 
 이 프로젝트에 기록을 저장하는 새 게임은 `PROGRESS` 목록에 저장 위치와 표시 문구를 추가하면 카드에 진행 상황이 나옵니다.
 
+## 새 게임에 로그인 붙이기 (필수)
+
+이 사이트에 올리는 모든 새 게임은 사이트와 같은 구글 로그인을 쓰고, 기록이 기기 간에 이어져야 합니다. 어떤 Claude 세션에서 작업하든 같습니다. 예외는 이미 자체 프로젝트를 쓰는 MONO FLIGHT뿐입니다.
+
+1. 게임 저장소 이름이 `게임-이름`이면 저장 위치는 `games/게임-이름/{uid}`, 값은 `{savedAt: 숫자, json: 문자열}`입니다. Firebase 규칙이 이 위치를 이미 허용하므로 규칙은 고치지 않습니다.
+2. 게임의 HTML에서 Firebase compat 10.14.1(app, auth, database)을 `www.gstatic.com/firebasejs/`에서 불러오고, 이 사이트 `index.html`의 `FIREBASE_CFG`로 초기화합니다. 다른 Firebase 프로젝트를 새로 만들지 않습니다. 설정값이 같아야 로그인이 공유됩니다.
+3. `onAuthStateChanged`로 로그인 상태를 받아 기록을 불러오고, 기록이 바뀔 때 저장합니다. 이미 로그인되어 있으면 로그인 버튼 대신 계정과 `로그아웃`을 보여 줍니다. 게임을 바로 열었을 때를 위해 `구글로 로그인` 버튼도 둡니다. 로그인하지 않아도 그 기기에 저장되며 게임을 할 수 있어야 합니다.
+4. 기기 간 기록이 다르면 합칩니다. 진행도처럼 합칠 수 있으면 더 앞선 쪽으로 자동으로 합칩니다(MONO HUSH). 시즌 데이터처럼 합칠 수 없으면 어느 기록을 쓸지 묻습니다(피트월 그랑프리). 기록을 말없이 덮어쓰지 않습니다.
+5. 다른 기기에서 돌아왔을 때를 위해 `visibilitychange`에서 다시 확인합니다. 경기 도중에는 기록을 바꾸지 않습니다.
+6. 이 사이트 `index.html`의 `GAMES`에 게임을 추가하고, `PROGRESS`에 `path:'games/게임-이름/'`과 카드에 보일 문구를 추가합니다.
+7. 실제 로그인은 `dobbi52.github.io` 주소에서만 됩니다. Claude 아티팩트에서는 Firebase가 막히므로 `location.hostname`을 확인해 불러오지 않습니다.
+
+참고할 코드: [MONO HUSH](https://github.com/dobbi52/mono-hush)(간단한 합치기), [피트월 그랑프리](https://github.com/dobbi52/pitwall-gp)(기록 선택).
+
+현재 Firebase 규칙의 저장 위치는 `saves`(퀴디치), `pitwall`, `monohush`, 그리고 새 게임용 `games/{게임}/{uid}`입니다.
+
 ## 지켜야 할 것
 
 - 파일 하나(`index.html`)로 유지합니다.
