@@ -29,7 +29,7 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--shelf);color:var(--shelf-ink);font:400 16px/1.6 var(--body);word-break:keep-all}
 .wrap{max-width:860px;margin:0 auto;padding:32px 24px 56px}
 header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px}
-h1{margin:0;font:400 24px/1.2 var(--han);letter-spacing:.01em}
+h1{margin:0;font:400 24px/1.2 var(--han);letter-spacing:.01em;white-space:nowrap}
 header p{margin:0;font-size:14px;color:var(--shelf-mute)}
 .head-r{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap;min-width:0}
 #acc{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--shelf-mute);min-width:0}
@@ -83,6 +83,7 @@ a:focus-visible{outline:3px solid var(--focus,#fff);outline-offset:3px}
   .game{grid-template-columns:1fr;padding:16px}
   .side{grid-template-columns:1fr auto;align-items:center;gap:10px 16px}
   .meta{grid-column:1/-1;justify-content:flex-start;gap:16px}
+  .progress{grid-column:1/-1;text-align:left}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
