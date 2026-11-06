@@ -208,6 +208,7 @@ const FIREBASE_CFG = {
 /* 이 프로젝트에 기록을 저장하는 게임의 저장 위치와 카드에 보일 진행 상황 */
 const PROGRESS = {
   'pitwall-gp': { path:'pitwall/', text:d => '시즌 ' + (d.season || 1) + ' · ' + (d.round >= 12 ? '시즌 종료' : '라운드 ' + ((d.round || 0) + 1) + '/12') },
+  'mono-hush':  { path:'monohush/', text:d => d.clear5 ? '모든 방 탈출' : '방 ' + (d.unlocked || 1) + '/5 진행 중' },
   'quidditch':  { path:'saves/',   text:d => d.phase === 'choose' ? '' : '시즌 ' + (d.season || 1) + ' · ' + (d.phase === 'regular' ? '라운드 ' + ((d.round || 0) + 1) : d.phase === 'playoff' ? '플레이오프' : '비시즌') }
 };
 const account = { auth:null, user:null, msg:'' };
