@@ -111,6 +111,9 @@ const GAMES = [
   { repo:'mono-hush', title:'MONO HUSH', status:'개발 중', updated:'2026-11-06T01:04:00Z',
     bg:'radial-gradient(80% 140% at 50% 100%,#1f1f1d 0,#0e0e0d 55%,#050505 100%)', btn:'#ecebe6', btnInk:'#050505',
     desc:'물소리를 듣고 눈먼 괴물이 쫓아오는 어둠 속에서 열쇠를 모아 방 다섯 개를 빠져나가는 흑백 도트 공포 게임' },
+  { repo:'mono-frog', title:'MONO FROG', status:'개발 중', updated:'2026-11-07T07:45:00Z',
+    bg:'radial-gradient(55% 75% at 50% 0%,#5a5a56 0,#262624 45%,#0b0b0b 100%)', btn:'#f1f1ee', btnInk:'#0b0b0c',
+    desc:'화면 양 끝이 이어진 둥근 우물에서 힘을 모아 뛰어 하늘로 나가는 흑백 픽셀 개구리 점프 게임' },
 ];
 
 const CACHE_KEY = 'pushed-dates-v1';
@@ -209,6 +212,7 @@ const FIREBASE_CFG = {
 const PROGRESS = {
   'pitwall-gp': { path:'pitwall/', text:d => '시즌 ' + (d.season || 1) + ' · ' + (d.round >= 12 ? '시즌 종료' : '라운드 ' + ((d.round || 0) + 1) + '/12') },
   'mono-hush':  { path:'monohush/', text:d => d.clear5 ? '모든 방 탈출' : '방 ' + (d.unlocked || 1) + '/5 진행 중' },
+  'mono-frog':  { path:'games/mono-frog/', text:d => { const r = d.rec || {}; return r.cleared ? '3구역 탈출' : r.best ? '최고 ' + r.best + 'm · ' + (r.maxZone || 1) + '구역' : ''; } },
   'quidditch':  { path:'saves/',   text:d => d.phase === 'choose' ? '' : '시즌 ' + (d.season || 1) + ' · ' + (d.phase === 'regular' ? '라운드 ' + ((d.round || 0) + 1) : d.phase === 'playoff' ? '플레이오프' : '비시즌') }
 };
 const account = { auth:null, user:null, msg:'' };
