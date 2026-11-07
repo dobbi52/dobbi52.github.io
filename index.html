@@ -212,7 +212,7 @@ const FIREBASE_CFG = {
 const PROGRESS = {
   'pitwall-gp': { path:'pitwall/', text:d => '시즌 ' + (d.season || 1) + ' · ' + (d.round >= 12 ? '시즌 종료' : '라운드 ' + ((d.round || 0) + 1) + '/12') },
   'mono-hush':  { path:'monohush/', text:d => d.clear5 ? '모든 방 탈출' : '방 ' + (d.unlocked || 1) + '/5 진행 중' },
-  'mono-frog':  { path:'games/mono-frog/', text:d => { const r = d.rec || {}; return r.cleared ? '3구역 탈출' : r.best ? '최고 ' + r.best + 'm · ' + (r.maxZone || 1) + '구역' : ''; } },
+  'mono-frog':  { path:'games/mono-frog/', text:d => { const r = d.rec || {}; return r.cleared ? '우물 탈출' : r.best ? '최고 ' + r.best + 'm · ' + (r.maxZone || 1) + '/5구역' : ''; } },
   'quidditch':  { path:'saves/',   text:d => d.phase === 'choose' ? '' : '시즌 ' + (d.season || 1) + ' · ' + (d.phase === 'regular' ? '라운드 ' + ((d.round || 0) + 1) : d.phase === 'playoff' ? '플레이오프' : '비시즌') }
 };
 const account = { auth:null, user:null, msg:'' };
