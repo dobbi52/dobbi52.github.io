@@ -128,17 +128,10 @@ const GAMES = [
 const CACHE_KEY = 'pushed-dates-v1';
 const CACHE_MS = 30 * 60 * 1000;
 
-function dayGap(iso){
-  const start = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
-  return Math.round((start(new Date()) - start(new Date(iso))) / 86400000);
-}
 function whenText(iso){
-  const n = dayGap(iso);
-  if (n <= 0) return '오늘 수정';
-  if (n === 1) return '어제 수정';
-  if (n < 30) return n + '일 전 수정';
-  const d = new Date(iso);
-  return (d.getMonth() + 1) + '월 ' + d.getDate() + '일 수정';
+  const d = new Date(iso), now = new Date(), p = n => String(n).padStart(2, '0');
+  const day = (d.getFullYear() !== now.getFullYear() ? d.getFullYear() + '년 ' : '') + (d.getMonth() + 1) + '월 ' + d.getDate() + '일';
+  return day + ' ' + p(d.getHours()) + ':' + p(d.getMinutes()) + ' 수정';
 }
 function el(tag, cls, text){
   const e = document.createElement(tag);
