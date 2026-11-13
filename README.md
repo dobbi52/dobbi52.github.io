@@ -34,7 +34,7 @@
 
 ## 새 게임에 로그인 붙이기 (필수)
 
-이 사이트에 올리는 모든 새 게임은 사이트와 같은 구글 로그인을 쓰고, 기록이 기기 간에 이어져야 합니다. 어떤 Claude 세션에서 작업하든 같습니다. 예외는 이미 자체 프로젝트를 쓰는 MONO FLIGHT와, 사용자가 로그인 없이 올리기로 정한 Rock Paper Scissors Brawl(`rps-brawl`)과 색칠 격자(`color-grid`)뿐입니다.
+이 사이트에 올리는 모든 새 게임은 사이트와 같은 구글 로그인을 쓰고, 기록이 기기 간에 이어져야 합니다. 어떤 Claude 세션에서 작업하든 같습니다. 예외는 이미 자체 프로젝트를 쓰는 MONO FLIGHT와, 사용자가 로그인 없이 올리기로 정한 Rock Paper Scissors Brawl(`rps-brawl`), 색칠 격자(`color-grid`), 글자 풍경(`ascii-sea`)뿐입니다.
 
 1. 게임 저장소 이름이 `게임-이름`이면 저장 위치는 `games/게임-이름/{uid}`, 값은 `{savedAt: 숫자, json: 문자열}`입니다. Firebase 규칙이 이 위치를 이미 허용하므로 규칙은 고치지 않습니다.
 2. 게임의 HTML에서 Firebase compat 10.14.1(app, auth, database)을 `www.gstatic.com/firebasejs/`에서 불러오고, 이 사이트 `index.html`의 `FIREBASE_CFG`로 초기화합니다. 다른 Firebase 프로젝트를 새로 만들지 않습니다. 설정값이 같아야 로그인이 공유됩니다.
