@@ -128,7 +128,9 @@ const GAMES = [
     desc:'밤바다 한가운데 등대를 지키며 파도마다 카드 한 장을 골라 강해지고, 20번째 파도를 버텨 새벽을 맞는 도트 로그라이크 디펜스' },
   { repo:'ascii-sea', title:'글자 풍경', status:'개발 중', updated:'2026-11-13T01:15:00Z',
     bg:'linear-gradient(180deg,#0b4a63 0,#06283f 45%,#0d2a12 100%)', btn:'#5fd4f0', btnInk:'#04141c',
-    desc:'글자로만 그린 바닷속, 숲속 연못, 개미굴, 도시 야경, 비 오는 창가, 모닥불을 쓸고 누르며 물고기 떼와 바람, 개미 행렬, 불꽃놀이, 김 서린 유리, 일렁이는 불꽃이 반응하는 걸 구경하는 장난감' },
+    desc:'글자로만 그린 바닷속, 숲속 연못, 개미굴, 도시 야경, 비 오는 창가, 모닥불을 쓸고 누르며 물고기 떼와 바람, 개미 행렬, 불꽃놀이, 김 서린 유리, 일렁이는 불꽃이 반응하는 걸 구경하는 장난감' },  { repo:'apt-manager', title:'우리 아파트 관리소장', status:'개발 중', updated:'2026-11-28T12:30:00Z',
+    bg:'linear-gradient(180deg,#1e2247 0,#2b2240 60%,#3b6e2b 100%)', btn:'#f5b82e', btnInk:'#2b2240',
+    desc:'단면으로 잘린 도트 아파트에서 민원을 미니게임으로 해결하고, 이웃 궁합을 맞춰 입주시키며 8층까지 올리는 관리 게임' },
 ];
 
 const CACHE_KEY = 'pushed-dates-v1';
@@ -223,6 +225,7 @@ const PROGRESS = {
   'mono-frog':  { path:'games/mono-frog/', text:d => { const r = d.rec || {}; return r.cleared ? '우물 탈출' : r.best ? '최고 ' + r.best + 'm · ' + (r.maxZone || 1) + '/5구역' : ''; } },
   'mono-gambit': { path:'games/mono-gambit/', text:d => { const m = d.meta || {}; return (m.ascClear ? '도전 ' + m.ascClear + '단계 클리어 · ' : m.ascMax ? '3막 클리어 · ' : '') + '영혼 ' + (m.souls || 0); } },
   'last-lighthouse': { path:'games/last-lighthouse/', text:d => d.clears ? '새벽 ' + d.clears + '번 · 최고 파도 ' + (d.best || 0) : d.best ? '최고 파도 ' + d.best + '/20' : '' },
+  'apt-manager': { path:'games/apt-manager/', text:d => d.day + '일차 · ' + d.floors + '층 · 주민 ' + (d.rooms || []).filter(r => r.type).length + '집' },
   'quidditch':  { path:'saves/',   text:d => d.phase === 'choose' ? '' : '시즌 ' + (d.season || 1) + ' · ' + (d.phase === 'regular' ? '라운드 ' + ((d.round || 0) + 1) : d.phase === 'playoff' ? '플레이오프' : '비시즌') }
 };
 const account = { auth:null, user:null, msg:'' };
